@@ -184,45 +184,55 @@
 
 					 
 					$wpsy_db_data = get_option('wpsy_db_data');
-					$url = $wpsy_db_data['wpsy_url'];
+					$wpsy_db_data = (is_array($wpsy_db_data)?$wpsy_db_data:array());
 					
-					$storefront_access_token = $wpsy_db_data['wpsy_storefront_token'];
+					$url = (isset($wpsy_db_data['wpsy_url'])?$wpsy_db_data['wpsy_url']:'');
 					
-					$curl = curl_init();
+					//pree($url);exit;
+					if($url){
 					
-					$curl_data = array(
-						CURLOPT_URL => 'https://'.$url.'/api/2022-04/graphql.json',
-						CURLOPT_RETURNTRANSFER => true,
-						CURLOPT_ENCODING => '',
-						CURLOPT_MAXREDIRS => 10,
-						CURLOPT_TIMEOUT => 0,
-						CURLOPT_FOLLOWLOCATION => true,
-						CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-						CURLOPT_CUSTOMREQUEST => 'POST',
-						CURLOPT_POSTFIELDS =>trim($query),
-						CURLOPT_HTTPHEADER => array(
-							'Content-Type: application/graphql',
-							'X-Shopify-Storefront-Access-Token: '.$storefront_access_token,
-							'Cookie: _secure_session_id=45097142f4293cac96d24a74e547f039'
-						),
-					);
-
-					curl_setopt_array($curl, $curl_data);
-					
-					$response = curl_exec($curl);
-
-					curl_close($curl);
-
-					if($inner){
-						$data = json_decode($response);
+						$storefront_access_token = $wpsy_db_data['wpsy_storefront_token'];
 						
-						$data = (empty($data) && !is_object($data)?'':$data->data);
-
-						return $data;
-					}else{
-						echo $response;exit;
-					}
+						//pree($wpsy_db_data);exit;
+						
+						$curl = curl_init();
+						
+						$curl_data = array(
+							CURLOPT_URL => 'https://'.$url.'/api/2024-10/graphql.json',
+							CURLOPT_RETURNTRANSFER => true,
+							CURLOPT_ENCODING => '',
+							CURLOPT_MAXREDIRS => 10,
+							CURLOPT_TIMEOUT => 0,
+							CURLOPT_FOLLOWLOCATION => true,
+							CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+							CURLOPT_CUSTOMREQUEST => 'POST',
+							CURLOPT_POSTFIELDS =>trim($query),
+							CURLOPT_HTTPHEADER => array(
+								'Content-Type: application/graphql',
+								'X-Shopify-Storefront-Access-Token: '.$storefront_access_token,
+								'Cookie: _secure_session_id=45097142f4293cac96d24a74e547f039'
+							),
+						);
+	
+						curl_setopt_array($curl, $curl_data);
+						
+						$response = curl_exec($curl);
+						
+						//pree($curl_data);pree($response);exit;	
+	
+						curl_close($curl);
+	
+						if($inner){
+							$data = json_decode($response);
+							
+							$data = (empty($data) && !is_object($data)?'':$data->data);
+	
+							return $data;
+						}else{
+							echo $response;exit;
+						}
 				
+					}
 				}
 			
 			}

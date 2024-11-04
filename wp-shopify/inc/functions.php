@@ -502,11 +502,13 @@
 	function wpsy_url_render($args)
 	{
 	
-	   $options = get_option('wpsy_db_data');
+	   $options = get_option('wpsy_db_data');	   
+	   $options = is_array($options)?$options:array();
+	   
 	   ?>
-		<input type='text' name='wpsy_db_data[wpsy_url]' value='<?php echo $options['wpsy_url']; ?>'
+		<input type="text" name="wpsy_db_data[wpsy_url]" value="<?php echo (isset($options['wpsy_url'])?$options['wpsy_url']:''); ?>"
 		   <?php
-		   if (is_array($args) && sizeof($args) > 0) {
+		   if (is_array($args) && count($args)>0) {
 			  foreach ($args as $key => $value) {
 				 echo $key . "=" . $value . " ";
 			  }
@@ -520,10 +522,11 @@
 	{
 	
 	   $options = get_option('wpsy_db_data');
+	   $options = is_array($options)?$options:array();
 	   ?>
-		<input type='text' name='wpsy_db_data[wpsy_api_key]' value='<?php echo $options['wpsy_api_key']; ?>'
+		<input type='text' name='wpsy_db_data[wpsy_api_key]' value='<?php echo (isset($options['wpsy_api_key'])?$options['wpsy_api_key']:''); ?>'
 		   <?php
-		   if (is_array($args) && sizeof($args) > 0) {
+		   if (is_array($args) && count($args) > 0) {
 			  foreach ($args as $key => $value) {
 				 echo $key . "=" . $value . " ";
 			  }
@@ -537,10 +540,11 @@
 	{
 	
 	   $options = get_option('wpsy_db_data');
+	   $options = is_array($options)?$options:array();
 	   ?>
-		<input type='text' name='wpsy_db_data[wpsy_password]' value='<?php echo $options['wpsy_password']; ?>'
+		<input type='text' name='wpsy_db_data[wpsy_password]' value='<?php echo (isset($options['wpsy_password'])?$options['wpsy_password']:''); ?>'
 		   <?php
-		   if (is_array($args) && sizeof($args) > 0) {
+		   if (is_array($args) && count($args) > 0) {
 			  foreach ($args as $key => $value) {
 				 echo $key . "=" . $value . " ";
 			  }
@@ -554,10 +558,11 @@
 	{
 	
 	   $options = get_option('wpsy_db_data');
+	   $options = is_array($options)?$options:array();
 	   ?>
-		<input type='text' name='wpsy_db_data[wpsy_storefront_token]' value='<?php echo $options['wpsy_storefront_token']; ?>'
+		<input type='text' name='wpsy_db_data[wpsy_storefront_token]' value='<?php echo (isset($options['wpsy_storefront_token'])?$options['wpsy_storefront_token']:''); ?>'
 		   <?php
-		   if (is_array($args) && sizeof($args) > 0) {
+		   if (is_array($args) && count($args) > 0) {
 			  foreach ($args as $key => $value) {
 				 echo $key . "=" . $value . " ";
 			  }
