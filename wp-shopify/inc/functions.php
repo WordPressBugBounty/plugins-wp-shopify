@@ -441,60 +441,80 @@
 	}
 
 	
-	function shoppd_settings_section_callback()
+	function shoppd_settings_section_callback($wpsy_db_data=array())
 	{
-	
-	   echo '<div class="alert alert-warning" role="alert">'.__('Please fill the required fields.','wp-shopify').'</div>';
+		$wpsy_db_data = ((is_array($wpsy_db_data) && !empty($wpsy_db_data))?get_option('wpsy_db_data'):$wpsy_db_data);
+		
+		$count_total = count($wpsy_db_data);
+				
+		$wpsy_db_data = array_filter($wpsy_db_data);
+		
+		$count_filled = count($wpsy_db_data);
+		
+		if(empty($wpsy_db_data) || ($count_filled!=$count_total)){	
+			echo '<div class="alert alert-warning" role="alert">'.__('Please fill the required fields.','wp-shopify').'</div>';
+		}
 	
 	}	
 	
 	function wpsy_settings_init()
 	{
-	
-	   register_setting('wpsy_settings_page', 'wpsy_db_data');
-	   
-	   
-	   add_settings_section(
+		
+		register_setting('wpsy_settings_page', 'wpsy_db_data');
+		
+		add_settings_section(
 		  'wpsy_settings_page_section',
 		  '&nbsp;',
 		  'shoppd_settings_section_callback',
 		  'wpsy_settings_page'
-	   );	
-
-	   $args = array('size' => '80');
-	   add_settings_field(
-		  'wpsy_url',
-		  __('Shopify Domain (no https://)','wp-shopify'),
-		  'wpsy_url_render',
-		  'wpsy_settings_page',
-		  'wpsy_settings_page_section',
-		  $args
-	   );
-	   add_settings_field(
+		);	
+		
+		$args = array('size' => '80', 'class'=>'wpsy_fields');
+		
+		add_settings_field(
 		  'wpsy_api_key',
-		  __('Shopify Private app API key','wp-shopify'),
+		  __('API Key','wp-shopify'),
 		  'wpsy_api_key_render',
 		  'wpsy_settings_page',
 		  'wpsy_settings_page_section',
 		  $args
-	   );
-	   add_settings_field(
+		);
+		add_settings_field(
 		  'wpsy_password',
-		  __('Shopify Private app API secret key', 'wp-shopify'),
+		  __('API Password', 'wp-shopify'),
 		  'wpsy_password_render',
 		  'wpsy_settings_page',
 		  'wpsy_settings_page_section',
 		  $args
-	   );
-	
-	   add_settings_field(
+		);
+
+		add_settings_field(
+		  'wpsy_storefront_shared',
+		  __('Shared Secret', 'wp-shopify'),
+		  'wpsy_storefront_shared_render',
+		  'wpsy_settings_page',
+		  'wpsy_settings_page_section',
+		  $args
+		);
+				
+		add_settings_field(
 		  'wpsy_storefront_token',
-		  __('Storefront API access token', 'wp-shopify'),
+		  __('Access Token', 'wp-shopify'),
 		  'wpsy_storefront_token_render',
 		  'wpsy_settings_page',
 		  'wpsy_settings_page_section',
 		  $args
-	   );	
+		);	
+		
+
+		add_settings_field(
+		  'wpsy_url',
+		  __('Domain','wp-shopify'),
+		  'wpsy_url_render',
+		  'wpsy_settings_page',
+		  'wpsy_settings_page_section',
+		  $args
+		);
 	
 	}
 	
@@ -517,6 +537,24 @@
 	   <?php
 	
 	}
+	
+	function wpsy_storefront_shared_render($args)
+	{
+	
+	   $options = get_option('wpsy_db_data');
+	   $options = is_array($options)?$options:array();
+	   ?>
+		<input type='text' name='wpsy_db_data[wpsy_storefront_shared]' value='<?php echo (isset($options['wpsy_storefront_shared'])?$options['wpsy_storefront_shared']:''); ?>'
+		   <?php
+		   if (is_array($args) && count($args) > 0) {
+			  foreach ($args as $key => $value) {
+				 echo $key . "=" . $value . " ";
+			  }
+		   }
+		   ?>> <i style="color:#8A8B8C;"i class="fas fa-share-alt"></i>
+	   <?php
+	
+	}	
 	
 	function wpsy_api_key_render($args)
 	{

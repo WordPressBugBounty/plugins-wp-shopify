@@ -3,7 +3,7 @@ Contributors: fahadmahmood, invoicepress
 Tags: Shopify
 Requires at least: 4.3 
 Tested up to: 6.6
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,14 +54,50 @@ The id is shown in the URL when you edit a product in your admin.
 
 == Frequently Asked Questions ==
 
+**How should I know that my store is configured properly?**
+
+To configure your store properly, you will need Storefront API access. To achieve this, go to Apps and sales channels > develop apps > create an app and configure storefront API integration. Make sure to check all the access scopes (checkboxes) and save. You will get the Storefront API access token to configure your store on the plugin settings page.
+[youtube http://www.youtube.com/watch?v=3Q7P1D1owwc]
+
+**Video tutorial showing the credentials and the crown icon.**
+
+Enter all the credentials correctly in the required fields on the plugin settings page, a crown icon in the top right will appear. And the go to store button will be active as well as redirecting you to your Shopify store. 
+[youtube http://www.youtube.com/watch?v=YKlkpEKK1Sk]
+
+**Is there any step-by-step guide to install and configure this plugin?**
+
+Configure this plugin with Shopify Store by following the steps below:
+
+1) Create a store or if you have an existing one, find the URL.
+screenshot-9
+
+2) Create an APP and Install that APP on your store
+[youtube http://www.youtube.com/watch?v=3Q7P1D1owwc]
+
+3) Configure the storefront within your store APP
+screenshot-10
+
+4) Get the app storefront API access token, API key and API secret key to insert in the required input fields on the plugin settings page. Save changes and check the outcome.
+[youtube http://www.youtube.com/watch?v=YKlkpEKK1Sk]
+screenshot-8
+
 
 == Screenshots ==
 
 1. Single Product
 2. Shop/Collection
 3. Settings
+4. Product
+5. Add to cart
+6. The Crown icon appears after configuring the store successfully.
+7. Storefront API access token/creating an app in Shopify store.
+8. Fill the required fields to configure the Shopify store with the WP Shopify plugin.
+9. Store URL
+
 
 == Changelog ==
+= 1.4.9 =
+* New: Update settings page interface. [06/11/2024]
 = 1.4.7 =
 * Fix: [WP Shopify] Warning: Undefined variable $o. [Thanks to @hyuman][16/05/2024]
 = 1.4.6 =
@@ -110,6 +146,8 @@ The id is shown in the URL when you edit a product in your admin.
 First version
 
 == Upgrade Notice ==
+= 1.4.9 =
+New: Update settings page interface.
 = 1.4.7 =
 Fix: [WP Shopify] Warning: Undefined variable $o.
 = 1.4.6 =

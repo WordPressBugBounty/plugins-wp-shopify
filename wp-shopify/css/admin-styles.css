@@ -5,6 +5,9 @@
 	position: relative;
 	float: left;
 }
+.wpsy_settings_div form{
+	width:50%;
+}
 .wpsy_settings_div form table.form-table{
 	margin: 0 0 0 10px;	
 }
@@ -93,6 +96,36 @@ div.wpsy_settings_div .green{
 }
 div.wpsy_settings_div .wp-shopify-shortcodes li strong{
 	float:none;
+}
+div.wpsy_settings_div .form-table tr.wpsy_fields th{
+	padding-top:0;	
+	width: 100%;
+}
+div.wpsy_settings_div .form-table tr.wpsy_fields th > svg{
+
+}
+div.wpsy_settings_div .form-table input.wpsy_fields{
+	width:306px;
+	margin-bottom:10px;
+}
+div.wpsy_settings_div .form-table tr.wpsy_fields th span.connection-status-red svg{
+	color:#D3272D;
+	font-size:11px;
+}
+div.wpsy_settings_div .form-table tr.wpsy_fields th.connection-bar svg{
+	font-size:14px;
+	margin-right:6px;
+}
+div.wpsy_settings_div .form-table tr.wpsy_fields th span.connection-status-green svg{
+	color:#090;
+	font-size:11px;
+}
+div.wpsy_settings_div .form-table tr.wpsy_fields th.connection-bar{
+	font-size:18px;
+	padding-bottom:0;
+}
+div.wpsy_settings_div .form-table tr.wpsy_fields th.connection-bar > span{
+	float:right;
 }
 @media only screen and (max-width: 480px) {
 }

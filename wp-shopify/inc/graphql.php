@@ -8,6 +8,8 @@
 			$posted = (empty($posted)?sanitize_wpsy_data($_POST):$posted);
 			$id = (array_key_exists('id', $posted)?$posted['id']:0);
 			$limit = (array_key_exists('limit', $posted)?$posted['limit']:10);
+			
+			//pree($posted);exit;
 
 			if ( !$inner && ! wp_verify_nonce( $posted['nonce'], 'wpsy-nonce' )) {
 				 die ( 'Busted!');
