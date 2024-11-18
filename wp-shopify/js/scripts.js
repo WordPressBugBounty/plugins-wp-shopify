@@ -18,6 +18,11 @@ jQuery(document).ready(function($){
 			
 		}
 	});			
+	
+	$('.wpsy_settings_div').on('click', '.wpsy-need-help', function(){
+		event.preventDefault();
+		$('a.nav-tab[data-tab="help"]').click();
+	});
 		
 
 });

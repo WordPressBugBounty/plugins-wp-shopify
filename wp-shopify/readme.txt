@@ -3,7 +3,7 @@ Contributors: fahadmahmood, invoicepress
 Tags: Shopify
 Requires at least: 4.3 
 Tested up to: 6.6
-Stable tag: 1.4.9
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,32 +54,32 @@ The id is shown in the URL when you edit a product in your admin.
 
 == Frequently Asked Questions ==
 
-**How should I know that my store is configured properly?**
+=How should I know that my store is configured properly?=
 
 To configure your store properly, you will need Storefront API access. To achieve this, go to Apps and sales channels > develop apps > create an app and configure storefront API integration. Make sure to check all the access scopes (checkboxes) and save. You will get the Storefront API access token to configure your store on the plugin settings page.
 [youtube http://www.youtube.com/watch?v=3Q7P1D1owwc]
 
-**Video tutorial showing the credentials and the crown icon.**
+=Video tutorial showing the credentials and the crown icon=
 
 Enter all the credentials correctly in the required fields on the plugin settings page, a crown icon in the top right will appear. And the go to store button will be active as well as redirecting you to your Shopify store. 
 [youtube http://www.youtube.com/watch?v=YKlkpEKK1Sk]
 
-**Is there any step-by-step guide to install and configure this plugin?**
+=Is there any step-by-step guide to install and configure this plugin?=
 
 Configure this plugin with Shopify Store by following the steps below:
 
-1) Create a store or if you have an existing one, find the URL.
-screenshot-9
+**&#128073; 1. Create a store or if you have an existing one, find the URL**
+[screenshot-9.png](https://ps.w.org/wp-shopify/assets/screenshot-9.png)
 
-2) Create an APP and Install that APP on your store
+**&#128073; 2. Create an APP and Install that APP on your store**
 [youtube http://www.youtube.com/watch?v=3Q7P1D1owwc]
 
-3) Configure the storefront within your store APP
-screenshot-10
+**&#128073; 3. Configure the storefront within your store APP**
+[screenshot-10.png](https://ps.w.org/wp-shopify/assets/screenshot-10.png)
 
-4) Get the app storefront API access token, API key and API secret key to insert in the required input fields on the plugin settings page. Save changes and check the outcome.
+**&#128073; 4. Get the app storefront API access token, API key and API secret key to insert in the required input fields on the plugin settings page. Save changes and check the outcome.**
 [youtube http://www.youtube.com/watch?v=YKlkpEKK1Sk]
-screenshot-8
+[screenshot-8.png](https://ps.w.org/wp-shopify/assets/screenshot-8.png)
 
 
 == Screenshots ==
@@ -96,6 +96,8 @@ screenshot-8
 
 
 == Changelog ==
+= 1.5.0 =
+* Fix: Fatal error: Uncaught TypeError: array_map(): Argument #2 ($array) must be of type array, bool given. [18/11/2024]
 = 1.4.9 =
 * New: Update settings page interface. [06/11/2024]
 = 1.4.7 =
@@ -146,6 +148,8 @@ screenshot-8
 First version
 
 == Upgrade Notice ==
+= 1.5.0 =
+Fix: Fatal error: Uncaught TypeError: array_map(): Argument #2 ($array) must be of type array, bool given.
 = 1.4.9 =
 New: Update settings page interface.
 = 1.4.7 =

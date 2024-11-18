@@ -2,6 +2,7 @@
 
 	global $wpsy_data, $wpsy_pro, $wpsy_premium_copy;
 	$wpsy_db_data = get_option('wpsy_db_data');
+	$wpsy_db_data = (is_array($wpsy_db_data)?$wpsy_db_data:array());
 	$wpsy_db_data = array_map('esc_attr', $wpsy_db_data);
 	
 	$store_data = wpsy_graphql_central(array('query'=>'shop'), true);
@@ -51,20 +52,20 @@
     </th></tr>
     
 	<tr class="wpsy_fields"><th scope="row" style="font-weight:normal;">
-	<?php _e("Enter your Shopify private app API keys below.",'wp-shopify'); ?> <a style="color:#4D83A8;" href=""><?php _e("Nee help finding these?",'wp-shopify'); ?></a>
+	<?php _e("Enter your Shopify private app API keys below.",'wp-shopify'); ?> <a style="color:#4D83A8;" href="" class="wpsy-need-help"><?php _e("Nee help finding these?",'wp-shopify'); ?></a>
     </th></tr>
 	
     <tr class="wpsy_fields">
     <th scope="row"><?php _e("API Key",'wp-shopify'); ?> <i style="color:#06C;" class="fas fa-key"></i></th>
     </tr><tr class="wpsy_fields">
-    <th>		<input type="text" name="wpsy_db_data[wpsy_api_key]" value="<?php echo $wpsy_db_data['wpsy_api_key']; ?>" size="80" class="wpsy_fields"> 
+    <th>		<input type="text" name="wpsy_db_data[wpsy_api_key]" value="<?php echo (isset($wpsy_db_data['wpsy_api_key'])?$wpsy_db_data['wpsy_api_key']:''); ?>" size="80" class="wpsy_fields"> 
     </th>
     </tr>
     
     
     <tr class="wpsy_fields"><th scope="row"><?php _e("API Password",'wp-shopify'); ?> <i style="color:#F90;" class="fas fa-fingerprint"></i></th>
     </tr><tr class="wpsy_fields">
-    <th>		<input type="password" name="wpsy_db_data[wpsy_password]" value="<?php echo $wpsy_db_data['wpsy_password']; ?>" size="80" class="wpsy_fields"> 
+    <th>		<input type="password" name="wpsy_db_data[wpsy_password]" value="<?php echo (isset($wpsy_db_data['wpsy_password'])?$wpsy_db_data['wpsy_password']:''); ?>" size="80" class="wpsy_fields"> 
     </th>       
     </tr>
     
@@ -72,19 +73,19 @@
     
     <tr class="wpsy_fields"><th scope="row"><?php _e("Shared Secret",'wp-shopify'); ?> <i style="color:#8A8B8C;" i="" class="fas fa-share-alt"></i></th>
     </tr><tr class="wpsy_fields">
-    <th>		<input type="text" name="wpsy_db_data[wpsy_storefront_shared]" value="<?php echo $wpsy_db_data['wpsy_storefront_shared']; ?>" size="80" class="wpsy_fields"> 
+    <th>		<input type="text" name="wpsy_db_data[wpsy_storefront_shared]" value="<?php echo (isset($wpsy_db_data['wpsy_storefront_shared'])?$wpsy_db_data['wpsy_storefront_shared']:''); ?>" size="80" class="wpsy_fields"> 
     </th>
     </tr>
     
     <tr class="wpsy_fields"><th scope="row"><?php _e("Storefront Access Token",'wp-shopify'); ?> <i style="color:#333;" class="fas fa-user-lock"></i></th>
     </tr><tr class="wpsy_fields">
-    <th>		<input type="password" name="wpsy_db_data[wpsy_storefront_token]" value="<?php echo $wpsy_db_data['wpsy_storefront_token']; ?>" size="80" class="wpsy_fields"> 
+    <th>		<input type="password" name="wpsy_db_data[wpsy_storefront_token]" value="<?php echo (isset($wpsy_db_data['wpsy_storefront_token'])?$wpsy_db_data['wpsy_storefront_token']:''); ?>" size="80" class="wpsy_fields"> 
     </th>
     </tr>
     
     <tr class="wpsy_fields"><th scope="row"><?php _e("Domain",'wp-shopify'); ?> <i style="color:#96BF48;" class="fab fa-shopify"></i></th>
     </tr><tr class="wpsy_fields">
-    <th>		<input type="text" name="wpsy_db_data[wpsy_url]" value="<?php echo $wpsy_db_data['wpsy_url']; ?>" size="80" class="wpsy_fields" placeholder="<?php _e("shop.myshpify.com",'wp-shopify'); ?>" /> 
+    <th>		<input type="text" name="wpsy_db_data[wpsy_url]" value="<?php echo (isset($wpsy_db_data['wpsy_url'])?$wpsy_db_data['wpsy_url']:''); ?>" size="80" class="wpsy_fields" placeholder="<?php _e("shop.myshpify.com",'wp-shopify'); ?>" /> 
     </th></tr>
     
     <tr class="wpsy_fields"><th scope="row">
