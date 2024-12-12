@@ -3,7 +3,7 @@ Contributors: fahadmahmood, invoicepress
 Tags: Shopify
 Requires at least: 4.3 
 Tested up to: 6.6
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,8 @@ Configure this plugin with Shopify Store by following the steps below:
 
 
 == Changelog ==
+= 1.5.1 =
+* Fix: Notice: Function _load_textdomain_just_in_time was called incorrectly.  [12/12/2024]
 = 1.5.0 =
 * Fix: Fatal error: Uncaught TypeError: array_map(): Argument #2 ($array) must be of type array, bool given. [18/11/2024]
 = 1.4.9 =
@@ -148,6 +150,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.5.1 =
+Fix: Notice: Function _load_textdomain_just_in_time was called incorrectly. 
 = 1.5.0 =
 Fix: Fatal error: Uncaught TypeError: array_map(): Argument #2 ($array) must be of type array, bool given.
 = 1.4.9 =

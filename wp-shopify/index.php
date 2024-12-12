@@ -3,7 +3,7 @@
 	Plugin Name: WP Shopify
 	Plugin URI:  https://profiles.wordpress.org/fahadmahmood/#content-plugins
 	Description: Display Shopify products on your WordPress blog.
-	Version:     1.5.0
+	Version:     1.5.1
 	Author:      Fahad Mahmood
 	Author URI:  https://profiles.wordpress.org/fahadmahmood/#content-about
 	License:     GPL2
@@ -21,7 +21,7 @@
 	global $wpsy_data, $wpsy_pro;
 	
 	$wpsy_premium_copy = 'https://shop.androidbubbles.com/product/wp-shopify';
-	$wpsy_data = get_plugin_data(__FILE__);
+	$wpsy_data = get_plugin_data(__FILE__, true, false);
 	
 	
 	define( 'WPSY_PLUGIN_DIR', dirname( __FILE__ ) );
@@ -39,7 +39,7 @@
 		
 	}
 		
-	$wpsy_data = get_plugin_data(__FILE__);
+	
 	
 
 	include_once('inc/functions.php');
