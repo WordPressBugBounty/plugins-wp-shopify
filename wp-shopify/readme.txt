@@ -2,8 +2,8 @@
 Contributors: fahadmahmood, invoicepress
 Tags: Shopify
 Requires at least: 4.3 
-Tested up to: 6.6
-Stable tag: 1.5.1
+Tested up to: 6.8
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,9 +93,13 @@ Configure this plugin with Shopify Store by following the steps below:
 7. Storefront API access token/creating an app in Shopify store.
 8. Fill the required fields to configure the Shopify store with the WP Shopify plugin.
 9. Store URL
+10. App Development > WP Shopify App
+11. button_type="js" implementation
 
 
 == Changelog ==
+= 1.5.2 =
+* New: button_type="js" provided with the normal theme as well.  [15/02/2025]
 = 1.5.1 =
 * Fix: Notice: Function _load_textdomain_just_in_time was called incorrectly.  [12/12/2024]
 = 1.5.0 =
@@ -150,6 +154,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.5.2 =
+New: button_type="js" provided with the normal theme as well.
 = 1.5.1 =
 Fix: Notice: Function _load_textdomain_just_in_time was called incorrectly. 
 = 1.5.0 =

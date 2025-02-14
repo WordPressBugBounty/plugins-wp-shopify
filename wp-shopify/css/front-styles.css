@@ -89,6 +89,88 @@ div#product-component-wrapper iframe {
 	position: absolute;
 	bottom: 2px;
 }
+.wpsy-add-to-cart {
+	background: linear-gradient(45deg, #ff6600, #ff3300);
+	color: #fff;
+	padding: 14px 24px;
+	border: none;
+	border-radius: 8px;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+	display: inline-block;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wpsy-add-to-cart:hover {
+	background: linear-gradient(45deg, #e65c00, #cc2900);
+	transform: scale(1.05);
+	box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.wpsy-add-to-cart:active {
+	transform: scale(0.95);
+}
+#shopify-cart-drawer {
+	display: none;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 350px;
+	height: 100%;
+	background: white;
+	box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+	padding: 40px 20px;
+	overflow-y: auto;
+	z-index: 100000;
+}
+#checkout-button, #close-cart {
+	width: 100%;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#checkout-button {
+	background: linear-gradient(45deg, #28a745, #218838);
+	color: #fff;
+}
+
+#checkout-button:hover {
+	background: linear-gradient(45deg, #218838, #1e7e34);
+	transform: scale(1.05);
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#checkout-button:active {
+	transform: scale(0.95);
+}
+
+#close-cart {
+	background: linear-gradient(45deg, #dc3545, #c82333);
+	color: #fff;
+}
+
+#close-cart:hover {
+	background: linear-gradient(45deg, #c82333, #bd2130);
+	transform: scale(1.05);
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#close-cart:active {
+	transform: scale(0.95);
+}
 @media only screen and (max-width: 480px) {
 	.wp_shopify li{
 		width:100%;

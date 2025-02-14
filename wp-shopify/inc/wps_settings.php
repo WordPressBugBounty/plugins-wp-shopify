@@ -4,6 +4,8 @@
 	$wpsy_db_data = get_option('wpsy_db_data');
 	$wpsy_db_data = (is_array($wpsy_db_data)?$wpsy_db_data:array());
 	$wpsy_db_data = array_map('esc_attr', $wpsy_db_data);
+	$site_name = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', get_bloginfo('name')));
+
 	
 	$store_data = wpsy_graphql_central(array('query'=>'shop'), true);
 
@@ -123,14 +125,18 @@
             <br /><br />
 			<small><strong><?php echo __('OR'); ?></strong> <br />[wp-shopify-product id="<?php echo __('some product ID', 'wp-shopify'); ?>" button_type="default"]</small>
             <br /><br />
-			<small><strong><?php echo __('OR'); ?></strong> <br />[wp-shopify-product id="<?php echo __('some product ID', 'wp-shopify'); ?>" <i class="green">button_type="js"</i> <i class="red">template="bello-sole"</i>] <b class="red">(<?php echo __('Premium Version', 'wp-shopify'); ?>)</b><br />
+			<small><strong><?php echo __('OR'); ?></strong> <br />[wp-shopify-product id="<?php echo __('some product ID', 'wp-shopify'); ?>" <i class="green">button_type="js"</i> <i class="red">template="bello-sole"</i> continue-shopping-page="<?php echo __('some product ID', 'wp-shopify'); ?>"] <b class="red">(<?php echo __('Premium Version', 'wp-shopify'); ?>)</b><br />
 <br />
-add_action('wp-shopify-product-after-description', 'callback_func'); //FOR EXTRA HTML BASED CONTENT
+<ol>
+<li>add_action('wp-shopify-product-after-description', 'callback_func'); //FOR EXTRA HTML BASED CONTENT</li>
+<li>add_filter('wp-shopify-buy-button-link', '<?php echo $site_name; ?>_shopify_buy_btn_callback', 10, 4);</li>
+</ol>
 </small>
 
             <br /><br /></li>
             <li>[wp-shopify type="collection" id="141421936749" limit="4" searchfilter="yes" url-type="default|shopify" thumb-size="default|300"]</li>
             <li>[wp-shopify type="products" limit="100"]</li>
+            <li>[wp-shopify-continue-shopping]</li>
             </ol>
 
 		</div>    

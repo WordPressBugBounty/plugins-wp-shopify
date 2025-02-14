@@ -113,7 +113,7 @@
 		}
 		
 		$ret = '';
-		
+		//pree($prices);exit;
 		if(!empty($prices)){
 			$ret = (min($prices)!=max($prices)?wpsy_shop_product_display_price(sanitize_text_field(min($prices)), $currency).' - '.wpsy_shop_product_display_price(sanitize_text_field(max($prices)), $currency):wpsy_shop_product_display_price(sanitize_text_field(min($prices)), $currency));		
 		}
@@ -267,14 +267,15 @@
 		$wpsy_db_data = get_option('wpsy_db_data');
 		
 		$id = (isset($atts['id'])?$atts['id']:(isset($_GET['id'])?$_GET['id']:0));
-		
+		$continue_shopping_page_id = (isset($atts['continue-shopping-page'])?$atts['continue-shopping-page']:'');
+		//pree($atts);exit;
 		$template = (isset($atts['template'])?$atts['template']:'default');
 		$button_type = (isset($atts['button_type'])?$atts['button_type']:'default');
 		$shop_link = (isset($atts['shop_link'])?$atts['shop_link']:home_url('shop'));
 		$description = (isset($atts['description'])?$atts['description']:'true');
 		
 		$store_data = wpsy_graphql_central(array('query'=>'product', 'id'=>$id), true);
-		
+		//pree($store_data);exit;
 		$o = '';
 		
 		if(is_object($store_data)){
@@ -302,8 +303,11 @@
 				  }
 				}
 			}
+			
 			$data['price'] = wpsy_product_price($store_data->product);
 			// field contains HTML markup
+			//pree($data);exit;
+			
 			switch($description){
 				case 'yes':
 				case '1':
@@ -316,7 +320,7 @@
 			}
 			$image_url = esc_url($store_data->product->featuredImage->url); 
 			$data['image'] = '<img data-src="'.$image_url.'" src="' . sanitize_text_field($image_url) . '" />';
-			$data['link'] = "https://" . $wpsy_db_data['wpsy_url'] . "/products/" . sanitize_text_field($store_data->product->handle);
+			$data['link'] = apply_filters('wp-shopify-buy-button-link', "https://" . $wpsy_db_data['wpsy_url'] . "/products/" . sanitize_text_field($store_data->product->handle), $store_data, $id, $continue_shopping_page_id);
 			
 			// start output
 			
@@ -375,7 +379,16 @@
 				$o .= '<div class="prod-upper">';
 				$o .= '<div class="prod-right">' . '<a target="_blank" aria-label="' . $data['name'] . ' (Opens in a new window)" href="' . $data['link'] . '"><h3>' . $data['name'] . '</h3></a>' . '<br />';
 				$o .= '<div class="prod-price">' .$data['price']. '</div>';
-				$o .= '<div class="prod-buy"><a href="' . $data['link'] . '" target="_blank" aria-label="' . $data['name'] . ' (Opens in a new window)"><img src="'.plugins_url( 'images/btn.png', dirname(__FILE__) ).'" /></a></div>';
+				
+				if(function_exists('wpsy_add_to_cart_js') && $button_type=='js'){
+					$o .= wpsy_add_to_cart_js($id, $wpsy_db_data);
+				}else{
+				
+					$o .= '<div class="prod-buy"><a href="' . $data['link'] . '" target="_blank" aria-label="' . $data['name'] . ' (Opens in a new window)"><img src="'.plugins_url( 'images/btn.png', dirname(__FILE__) ).'" /></a></div>';
+					
+				}
+				
+				
 				$o .= '</div>';//prod-right
 				$o .= '</div>';//prod-upper
 				$o .= '<div class="prod-clear"></div>';
@@ -401,11 +414,20 @@
 	}
 	
 	function wpsy_shop_product_display_price($price, $currency=''){	   
+		
+		//pree($price.class_exists('NumberFormatter'));exit;
+		$price = (float)$price;
+		//pree($currency);exit;
+	
 		if(class_exists('NumberFormatter')){
-			$fmt = new NumberFormatter( 'en_US', NumberFormatter::CURRENCY );
-			return $fmt->formatCurrency($price, $currency);	   
+			try {
+				$fmt = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
+				return $fmt->formatCurrency($price, $currency);
+			} catch (Exception $e) {
+				return '$' . number_format($price, 2);
+			}
 		}else{
-			return '$'.$price;
+			return '$' . number_format($price, 2);
 		}
 	}
 	
@@ -638,4 +660,37 @@
 				
 		
 		return $links; 
+	}
+	
+	add_shortcode('wp-shopify-continue-shopping', 'wp_shopify_continue_shopping_callback');
+	
+	function wp_shopify_continue_shopping_callback($atts=array()){
+		
+		$wpsy_db_data = get_option('wpsy_db_data');
+
+		$id = trim(isset($_GET['id'])?$_GET['id']:(isset($atts['id'])?$atts['id']:''));
+		$product = trim(isset($_GET['product'])?$_GET['product']:(isset($atts['product'])?$atts['product']:''));
+		
+		ob_start();
+		
+		if($id){		
+			
+			$store_data = wpsy_graphql_central(array('query'=>'product', 'id'=>$id), true);
+			$product = $store_data->product->handle;
+			
+		}
+			
+		$product_url = "https://" . $wpsy_db_data['wpsy_url'] . "/products/" . sanitize_text_field($product);
+		
+		
+?>
+<div class="wp-shopify-continue-shopping-wrapper">
+			<iframe src="<?php echo $product_url; ?>" class="wp-shopify-continue-shopping-iframe"></iframe>
+</div>            
+<?php		
+		
+		$o = ob_get_contents();
+		
+		ob_end_clean();
+		return $o;
 	}
