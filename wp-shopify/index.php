@@ -3,7 +3,7 @@
 	Plugin Name: WP Shopify
 	Plugin URI:  https://profiles.wordpress.org/fahadmahmood/#content-plugins
 	Description: Display Shopify products on your WordPress blog.
-	Version:     1.5.2
+	Version:     1.5.3
 	Author:      Fahad Mahmood
 	Author URI:  https://profiles.wordpress.org/fahadmahmood/#content-about
 	License:     GPL2

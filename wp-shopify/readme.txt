@@ -3,7 +3,7 @@ Contributors: fahadmahmood, invoicepress
 Tags: Shopify
 Requires at least: 4.3 
 Tested up to: 6.8
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,8 @@ Configure this plugin with Shopify Store by following the steps below:
 
 
 == Changelog ==
+= 1.5.3 =
+* New: Clear cart and a trash icon added to remove the items.  [18/02/2025]
 = 1.5.2 =
 * New: button_type="js" provided with the normal theme as well.  [15/02/2025]
 = 1.5.1 =
@@ -154,6 +156,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.5.3 =
+New: Clear cart and a trash icon added to remove the items.
 = 1.5.2 =
 New: button_type="js" provided with the normal theme as well.
 = 1.5.1 =
