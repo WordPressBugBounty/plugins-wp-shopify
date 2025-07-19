@@ -669,7 +669,9 @@
 		$wpsy_db_data = get_option('wpsy_db_data');
 
 		$id = trim(isset($_GET['id'])?$_GET['id']:(isset($atts['id'])?$atts['id']:''));
-		$product = trim(isset($_GET['product'])?$_GET['product']:(isset($atts['product'])?$atts['product']:''));
+		
+		
+		$product = isset($_GET['product']) ? sanitize_title_with_dashes(wp_unslash($_GET['product'])) : (isset($atts['product']) ? sanitize_title_with_dashes($atts['product']) : '');
 		
 		ob_start();
 		
@@ -680,12 +682,14 @@
 			
 		}
 			
-		$product_url = "https://" . $wpsy_db_data['wpsy_url'] . "/products/" . sanitize_text_field($product);
+		$product_url = esc_url("https://" . $wpsy_db_data['wpsy_url'] . "/products/" . $product);
+
 		
 		
 ?>
 <div class="wp-shopify-continue-shopping-wrapper">
 			<iframe src="<?php echo $product_url; ?>" class="wp-shopify-continue-shopping-iframe"></iframe>
+            
 </div>            
 <?php		
 		
