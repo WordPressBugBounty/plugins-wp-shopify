@@ -3,7 +3,7 @@ Contributors: fahadmahmood, invoicepress
 Tags: Shopify
 Requires at least: 4.3 
 Tested up to: 6.8
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,8 @@ Configure this plugin with Shopify Store by following the steps below:
 
 
 == Changelog ==
+= 1.5.5 =
+* Fix: Shopify API password and PHP error. [27/07/2025 / Thanks to @sjmaki]
 = 1.5.4 =
 * Fix: Vulnerability reported is reflected cross-site scripting (XSS) issue.  [19/07/2025 / Thanks to Willow (Automattic) / Security Researchers for WPScan and Jetpack]
 = 1.5.3 =
@@ -158,6 +160,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.5.5 =
+Fix: Shopify API password and PHP error.
 = 1.5.4 =
 Fix: Vulnerability reported is reflected cross-site scripting (XSS) issue.
 = 1.5.3 =

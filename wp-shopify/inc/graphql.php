@@ -227,7 +227,8 @@
 						if($inner){
 							$data = json_decode($response);
 							
-							$data = (empty($data) && !is_object($data)?'':$data->data);
+							$data = (is_object($data) && property_exists($data, 'data')) ? $data->data : '';
+
 	
 							return $data;
 						}else{

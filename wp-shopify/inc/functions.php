@@ -467,9 +467,15 @@
 	{
 		$wpsy_db_data = ((is_array($wpsy_db_data) && !empty($wpsy_db_data))?get_option('wpsy_db_data'):$wpsy_db_data);
 		
+		//pree($wpsy_db_data);
+		
 		$count_total = count($wpsy_db_data);
+		
+		$wpsy_db_data['wpsy_password'] = ($wpsy_db_data['wpsy_password']?$wpsy_db_data['wpsy_password']:'empty'); //to make this field not required
 				
 		$wpsy_db_data = array_filter($wpsy_db_data);
+		
+		//pree($wpsy_db_data);
 		
 		$count_filled = count($wpsy_db_data);
 		
