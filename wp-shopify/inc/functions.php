@@ -99,8 +99,12 @@
 	}	
 	
 	function wpsy_product_price($product_data){
-		
-		$variants = $product_data->priceRange;
+			
+		$variants = null;
+	
+		if (is_object($product_data) && isset($product_data->priceRange)) {
+			$variants = $product_data->priceRange;
+		}
 		
 		$currency = '';
 
@@ -148,7 +152,7 @@
 		 
 		switch($type){
 			default:		
-				$query_params = array('query'=>'products');
+				$query_params = array('query'=>'products', 'limit'=>$wpsy_limit);
 				$store_data = wpsy_graphql_central($query_params, true);
 				$store_data = (!empty($store_data)?$store_data->products->edges:array());
 			break;
@@ -278,9 +282,15 @@
 		//pree($store_data);exit;
 		$o = '';
 		
-		if(is_object($store_data)){
+		if(is_object($store_data) && isset($store_data->product) && is_object($store_data->product)){
 		
-			$images = $store_data->product->images;
+			$images = null;
+
+			if(isset($store_data->product->images)){
+				
+				$images = $store_data->product->images;
+				
+			}
 		
 			$data['name'] = ' ';
 			$data['price'] = ' ';
@@ -315,12 +325,35 @@
 				case 'enable':
 				case 'show':
 				case 'display':
-					$data['description'] = wp_kses_post($store_data->product->descriptionHtml);
+				
+					$data['description'] = '';
+
+					if (isset($store_data->product->descriptionHtml)) {
+						$data['description'] = wp_kses_post($store_data->product->descriptionHtml);
+					}
+					
 				break;
 			}
-			$image_url = esc_url($store_data->product->featuredImage->url); 
+			
+			$image_url = '';
+
+			if (isset($store_data->product->featuredImage->url)){
+			
+				$image_url = esc_url($store_data->product->featuredImage->url); 
+				
+			}
+			
 			$data['image'] = '<img data-src="'.$image_url.'" src="' . sanitize_text_field($image_url) . '" />';
-			$data['link'] = apply_filters('wp-shopify-buy-button-link', "https://" . $wpsy_db_data['wpsy_url'] . "/products/" . sanitize_text_field($store_data->product->handle), $store_data, $id, $continue_shopping_page_id);
+			
+			$handle = '';
+		
+			if(isset($store_data->product->handle)){
+				
+				$handle = sanitize_text_field($store_data->product->handle);
+				
+			}
+			
+			$data['link'] = apply_filters('wp-shopify-buy-button-link', "https://" . $wpsy_db_data['wpsy_url'] . "/products/" . $handle, $store_data, $id, $continue_shopping_page_id);
 			
 			// start output
 			
