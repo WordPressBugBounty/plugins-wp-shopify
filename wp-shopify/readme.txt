@@ -3,7 +3,7 @@ Contributors: fahadmahmood, invoicepress
 Tags: Shopify
 Requires at least: 4.3 
 Tested up to: 6.8
-Stable tag: 1.5.6
+Stable tag: 1.5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,8 @@ Configure this plugin with Shopify Store by following the steps below:
 
 
 == Changelog ==
+= 1.5.7 =
+* New: product-page attribute added. [12/08/2025 / Thanks to Christopher Hutchins]
 = 1.5.6 =
 * Fix: Limit parameter in the shop shortcode. [04/08/2025 / Thanks to Sachin & Maddy Stillman]
 = 1.5.5 =
@@ -162,6 +164,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.5.7 =
+New: product-page attribute added.
 = 1.5.6 =
 Fix: Limit parameter in the shop shortcode.
 = 1.5.5 =

@@ -141,8 +141,15 @@
 		$type = (isset($atts['type'])?$atts['type']:'');
 		$wpsy_limit = (isset($atts['limit'])?$atts['limit']:'');
 		$id = trim(isset($atts['id'])?$atts['id']:'');
+		$product_page = trim(isset($atts['product-page'])?$atts['product-page']:'');
 		$searchfilter = (isset($atts['searchfilter']) && $atts['searchfilter']=='yes'?true:false);
 		$thumb_size = (isset($atts['thumb-size'])?$atts['thumb-size']:'default');
+		
+		
+		
+		$product_page = (is_numeric($product_page)?get_post_field( 'post_name', $product_page ):($product_page?$product_page:'product'));
+
+		
 		
 		ob_start();
 		
@@ -168,7 +175,7 @@
 <div class="wpsy-collection" id="<?php echo $store_collection->id; ?>">
 	<h2><?php echo $store_collection->title; ?></h2>
     <?php if($store_collection->image->url): ?>
-    <p style="margin:20px 0 0 0; padding:0"><img src="<?php echo $store_collection->image->url; ?>" style="height:200px; width:auto; float:left; margin:10px 20px 0 0;" /><?php echo $store_collection->descriptionHtml; ?></p>
+    <div class="store-collection-description" style="margin:20px 0 0 0; padding:0"><img class="store-collection-image" src="<?php echo $store_collection->image->url; ?>" style="height:200px; width:auto; float:left; margin:10px 20px 0 0;" /><p class="store-collection-text"><?php echo $store_collection->descriptionHtml; ?></p></div>
     <?php endif; ?>
 </div>
 <?php					
@@ -212,7 +219,7 @@
 				
 				switch($url_type){
 					default:
-						$product_url = home_url().'/product/?id='.basename($product_data->id);
+						$product_url = home_url().'/'.$product_page.'/?id='.basename($product_data->id);
 					break;
 					case 'shopify':
 						$product_url = $product_data->onlineStoreUrl;

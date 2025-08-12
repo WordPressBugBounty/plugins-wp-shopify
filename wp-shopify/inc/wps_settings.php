@@ -120,7 +120,7 @@
          
 
             <ol class="wp-shopify-shortcodes">
-            <li>[wp-shopify]</li>
+            <li>[wp-shopify product-page="product"]</li>
             <li>[wp-shopify-product]
             <br /><br />
 			<small><strong><?php echo __('OR'); ?></strong> <br />[wp-shopify-product id="<?php echo __('some product ID', 'wp-shopify'); ?>" button_type="default"]</small>
@@ -134,8 +134,8 @@
 </small>
 
             <br /><br /></li>
-            <li>[wp-shopify type="collection" id="141421936749" limit="4" searchfilter="yes" url-type="default|shopify" thumb-size="default|300"]</li>
-            <li>[wp-shopify type="products" limit="100"]</li>
+            <li>[wp-shopify type="collection" id="141421936749" limit="4" searchfilter="yes" url-type="default|shopify" thumb-size="default|300" product-page="product"]</li>
+            <li>[wp-shopify type="products" limit="100" product-page="product"]</li>
             <li>[wp-shopify-continue-shopping]</li>
             </ol>
 
