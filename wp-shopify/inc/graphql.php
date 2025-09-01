@@ -7,7 +7,7 @@
 			
 			$posted = (empty($posted)?sanitize_wpsy_data($_POST):$posted);
 			$id = (array_key_exists('id', $posted)?$posted['id']:0);
-			$limit = (array_key_exists('limit', $posted)?$posted['limit']:10);
+			$limit = ((array_key_exists('limit', $posted) && is_numeric($posted['limit']) && $posted['limit']>0)?$posted['limit']:10);
 			
 			//pree($posted);exit;
 

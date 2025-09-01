@@ -3,7 +3,7 @@ Contributors: fahadmahmood, invoicepress
 Tags: shopify, products, embed, catalog, ecommerce
 Requires at least: 4.3 
 Tested up to: 6.8
-Stable tag: 1.5.8
+Stable tag: 1.5.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,8 @@ Configure this plugin with Shopify Store by following the steps below:
 
 
 == Changelog ==
+= 1.5.9 =
+* New: Limit attribute default value fix. [01/09/2025 / Thanks to Maryam KJ]
 = 1.5.8 =
 * New: Plugin name updated for users convenience. [26/08/2025 / Thanks to WordPress Plugins Team]
 = 1.5.7 =
@@ -166,6 +168,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.5.9 =
+New: Limit attribute default value fix.
 = 1.5.8 =
 New: Plugin name updated for users convenience.
 = 1.5.7 =

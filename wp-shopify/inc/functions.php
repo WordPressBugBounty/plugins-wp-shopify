@@ -160,7 +160,9 @@
 		switch($type){
 			default:		
 				$query_params = array('query'=>'products', 'limit'=>$wpsy_limit);
+				//pree($query_params);
 				$store_data = wpsy_graphql_central($query_params, true);
+				//pree($store_data);
 				$store_data = (!empty($store_data)?$store_data->products->edges:array());
 			break;
 			case 'collection':		

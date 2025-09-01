@@ -3,7 +3,7 @@
 	Plugin Name: External Store for Shopify
 	Plugin URI:  https://profiles.wordpress.org/fahadmahmood/#content-plugins
 	Description: Display Shopify products on your WordPress blog.
-	Version:     1.5.8
+	Version:     1.5.9
 	Author:      Fahad Mahmood
 	Author URI:  https://profiles.wordpress.org/fahadmahmood/#content-about
 	License:     GPL2
