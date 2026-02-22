@@ -274,15 +274,19 @@
 		
 		if(is_admin()){ return; }
 
-		global $wpsy_pro;
+		global $wpsy_pro, $wpsy_allowed_templates;
 		// normalize attribute keys, lowercase
 		$atts = array_change_key_case((array)$atts, CASE_LOWER);
 		$wpsy_db_data = get_option('wpsy_db_data');
 		
 		$id = (isset($atts['id'])?$atts['id']:(isset($_GET['id'])?$_GET['id']:0));
 		$continue_shopping_page_id = (isset($atts['continue-shopping-page'])?$atts['continue-shopping-page']:'');
-		//pree($atts);exit;
-		$template = (isset($atts['template'])?$atts['template']:'default');
+		//pree($atts);exit;				
+		$template = isset($atts['template']) ? sanitize_file_name($atts['template']) : 'default';
+		if (!preg_match('/^[a-z0-9_-]+$/i', $template) || $template === 'default') {
+			$template = 'default'; // fallback to safe
+		}		
+		
 		$button_type = (isset($atts['button_type'])?$atts['button_type']:'default');
 		$shop_link = (isset($atts['shop_link'])?$atts['shop_link']:home_url('shop'));
 		$description = (isset($atts['description'])?$atts['description']:'true');
@@ -367,7 +371,7 @@
 			// start output
 			
 			
-			if($wpsy_pro && $template!='' && $template!='default'){
+			if($wpsy_pro && $template!='' && $template!='default' && in_array($template, $wpsy_allowed_templates, true)){
 				
 				if(!empty($store_data->product->variants)){
 					foreach($store_data->product->variants->edges as $variant) { 
@@ -376,7 +380,7 @@
 						$data['variations'][$variant_id] = $node;
 					}
 				}
-				//pree($data);exit;
+
 				
 				$template_file = WPSY_PLUGIN_DIR.'/pro/templates/'.$template.'.php';
 				

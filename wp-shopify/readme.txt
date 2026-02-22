@@ -2,8 +2,8 @@
 Contributors: fahadmahmood, invoicepress
 Tags: shopify, products, embed, catalog, ecommerce
 Requires at least: 4.3 
-Tested up to: 6.8
-Stable tag: 1.5.9
+Tested up to: 6.9
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,10 @@ Configure this plugin with Shopify Store by following the steps below:
 
 
 == Changelog ==
+= 1.6.0 =
+* Security: Hardened premium template inclusion against potential Local File Inclusion (LFI) risks by adding sanitize_file_name(), strict whitelist validation, and fallback to 'default' template in shortcode handler. [22/02/2026 / Thanks to patchstack / timomangcut & @ratputin]
+* Improvement: Enhanced input sanitization in shortcode attributes for better overall security and reliability.
+* Compatibility: Tested with latest WordPress and Shopify API changes.
 = 1.5.9 =
 * New: Limit attribute default value fix. [01/09/2025 / Thanks to Maryam KJ]
 = 1.5.8 =
@@ -168,6 +172,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.6.0 =
+Important: If you're using premium/custom templates with the [wp-shopify-product] shortcode, update to 1.6.0 immediately for security hardening against file inclusion vulnerabilities. The template parameter is now strictly sanitized and whitelisted — custom templates must be added to the allowed list in code if needed. No action required if using only default templates.
 = 1.5.9 =
 New: Limit attribute default value fix.
 = 1.5.8 =

@@ -3,7 +3,7 @@
 	Plugin Name: External Store for Shopify
 	Plugin URI:  https://profiles.wordpress.org/fahadmahmood/#content-plugins
 	Description: Display Shopify products on your WordPress blog.
-	Version:     1.5.9
+	Version:     1.6.0
 	Author:      Fahad Mahmood
 	Author URI:  https://profiles.wordpress.org/fahadmahmood/#content-about
 	License:     GPL2
@@ -18,8 +18,8 @@
 	}
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-	global $wpsy_data, $wpsy_pro;
-	
+	global $wpsy_data, $wpsy_pro, $wpsy_allowed_templates;
+	$wpsy_allowed_templates = ['bello-sole'];
 	$wpsy_premium_copy = 'https://shop.androidbubbles.com/product/wp-shopify';
 	$wpsy_data = get_plugin_data(__FILE__, true, false);
 	
