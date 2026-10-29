@@ -1,18 +1,46 @@
-﻿=== External Store for Shopify ===
+=== External Store for Shopify ===
 Contributors: fahadmahmood, invoicepress
 Tags: shopify, products, embed, catalog, ecommerce
-Requires at least: 4.3 
-Tested up to: 6.9
-Stable tag: 1.6.0
+Requires at least: 5.8
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Display products from your Shopify store
-on your WordPress blog using shortcodes.
+Display products from your Shopify store on your WordPress website using shortcodes. Fast, cached and secure.
 
 == Description ==
 
-Display Shopify products on your WordPress blog.
+Display Shopify products on your WordPress website with simple shortcodes.
+
+**Free features**
+
+* Product grid and collection shortcodes with search filter
+* Responsive grid with configurable columns, sorting and price display
+* Single product page with gallery, price, sale price and sold out label
+* Product structured data (JSON-LD) for better search results
+* Built-in cache for fast pages, plus a Clear cache button
+* Test connection, shortcode generator and one-click disconnect in the settings
+* Secrets are never printed back into the settings page
+* Accessible, translatable and lazy loaded images
+
+**Premium features (plug and play)**
+
+If the `pro` folder exists, the premium features switch on automatically. If it does not exist, the free version keeps working exactly as before.
+
+* JS cart drawer with variant and quantity support, live cart counter and checkout button
+* Quick "Add to cart" buttons inside the product grid
+* Sale badges and list / cards layouts
+* `[wp-shopify-related]` related product recommendations
+* `[wp-shopify-cart-button]` cart button anywhere
+* Premium product templates
+
+**New attributes in 1.7.0**
+
+`[wp-shopify type="products" columns="4" sort="title" reverse="yes" show-price="yes"]`
+
+Sort values: title, price, newest, best-selling (collections also support manual and default).
 
 How it works?
 
@@ -53,6 +81,14 @@ So showing product 617935406 would be done as follows:
 The id is shown in the URL when you edit a product in your admin.
 
 == Frequently Asked Questions ==
+
+=Why are my products not updating immediately?=
+
+Product data is cached for 10 minutes by default. Change the cache time on the settings page, or use Settings > External Store for Shopify > Tools > Clear cache.
+
+=How do I check that my store is connected?=
+
+Open the Tools tab on the settings page and click "Test connection".
 
 =How should I know that my store is configured properly?=
 
@@ -98,6 +134,24 @@ Configure this plugin with Shopify Store by following the steps below:
 
 
 == Changelog ==
+= 1.7.0 =
+* Security: Storefront API requests are now built from validated values only (numeric ids, whitelisted sort keys), which removes the GraphQL injection risk from the product id in the URL.
+* Security: All shortcode output is escaped, settings are sanitized and validated, secret fields are no longer printed into the settings page and AJAX actions require the manage_options capability.
+* Security: The Shopify domain is validated (no IPs or paths), API calls use the WordPress HTTP API and the hard-coded session cookie was removed.
+* Security: The debug helper is limited to administrators with WP_DEBUG enabled.
+* New: Response cache with a configurable duration and a Clear cache button.
+* New: Tools tab with Test connection, status information and Disconnect.
+* New: Shortcode generator on the settings page.
+* New: columns, sort, reverse and show-price shortcode attributes.
+* New: Compare-at (sale) price, sold out label and Product structured data (JSON-LD).
+* New: Optional price formatting in the website language.
+* New: Search filter now shows a message when nothing matches and works with several lists on one page.
+* New (Premium): Cart drawer with variant and quantity support, quick add buttons, sale badges, list / cards layouts, [wp-shopify-related] and [wp-shopify-cart-button].
+* Improvement: Responsive CSS grid, lazy loaded images, scripts and styles load only where needed, versioned assets for proper browser caching.
+* Improvement: Storefront API updated, deprecated fields removed, premium /pro folder is loaded after the core so it works as a clean add-on.
+* Improvement: The gallery thumbnail switch on the single product page now works on the front end.
+* Compatibility: Tested with WordPress 7.1. Requires WordPress 5.8 and PHP 7.4.
+* Cleanup: Plugin data (settings and cache) is removed when the plugin is deleted.
 = 1.6.0 =
 * Security: Hardened premium template inclusion against potential Local File Inclusion (LFI) risks by adding sanitize_file_name(), strict whitelist validation, and fallback to 'default' template in shortcode handler. [22/02/2026 / Thanks to patchstack / timomangcut & @ratputin]
 * Improvement: Enhanced input sanitization in shortcode attributes for better overall security and reliability.
@@ -172,6 +226,8 @@ Configure this plugin with Shopify Store by following the steps below:
 First version
 
 == Upgrade Notice ==
+= 1.7.0 =
+Security hardening, caching, new shortcode attributes and a Tools tab. Because Shopify credentials are no longer printed on the settings page, leave the secret fields blank to keep the saved values.
 = 1.6.0 =
 Important: If you're using premium/custom templates with the [wp-shopify-product] shortcode, update to 1.6.0 immediately for security hardening against file inclusion vulnerabilities. The template parameter is now strictly sanitized and whitelisted — custom templates must be added to the allowed list in code if needed. No action required if using only default templates.
 = 1.5.9 =

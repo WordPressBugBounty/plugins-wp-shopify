@@ -129,3 +129,62 @@ div.wpsy_settings_div .form-table tr.wpsy_fields th.connection-bar > span{
 }
 @media only screen and (max-width: 480px) {
 }
+/* ---------- 1.7.0 additions ---------- */
+.wpsy_settings_div .wpsy-generator,
+.wpsy_settings_div .wpsy-tools {
+	clear: both;
+	max-width: 760px;
+}
+.wpsy_settings_div .wpsy-generator {
+	margin-top: 30px;
+	padding: 16px 20px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+}
+.wpsy_settings_div .wpsy-generator label {
+	margin-right: 8px;
+}
+.wpsy_settings_div #wpsy-tool-result {
+	margin-left: 10px;
+	font-weight: 600;
+}
+.wpsy_settings_div #wpsy-tool-result.is-ok {
+	color: #0a7d2c;
+}
+.wpsy_settings_div #wpsy-tool-result.is-error {
+	color: #b32d2e;
+}
+.wpsy_settings_div .wpsy-status-table td:first-child {
+	width: 220px;
+	font-weight: 600;
+}
+.wpsy_settings_div .wpsy-feature-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.wpsy_settings_div .wpsy-feature-list li {
+	margin: 0 0 8px 0;
+}
+.wpsy_settings_div .wpsy-feature-list svg {
+	color: #d79409;
+	margin-right: 6px;
+}
+.wpsy_settings_div .wpsy-pro-active {
+	display: inline-block;
+	margin-left: 8px;
+	padding: 1px 8px;
+	border-radius: 10px;
+	background: #0a7d2c;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 600;
+	vertical-align: middle;
+}
+.wpsy_settings_div .wpsy-feature-list li svg.fa-check-circle {
+	color: #0a7d2c;
+}
+.wpsy_settings_div .button-link-delete {
+	color: #b32d2e;
+}
